@@ -1,7 +1,7 @@
 library(ggplot2)
 library(scales)
 library(microbenchmark)
-startDiv<-0.01
+startDiv<-0.008
 step<-0.002
 N <- 50
 DivList<-list()
