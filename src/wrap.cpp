@@ -3,7 +3,7 @@
 void NumericMatrix_to_vector2d(NumericMatrix Rmatrix, std::vector< std::vector< double > > &vec2d)
 {
   vec2d.resize(Rmatrix.nrow());
-	for (int i = 0; i < Rmatrix.nnrow(); i++)
+	for (int i = 0; i < Rmatrix.nrow(); i++)
 	{
 		vec2d[i].resize(Rmatrix.ncol());
 	}
