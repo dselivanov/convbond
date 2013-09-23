@@ -1,5 +1,5 @@
 #include "convbond.h"
-double CBprice(double S_0,
+double CBprice_cpp(double S_0,
 	double sigma,
 	double intRate0,
 	double creditSpread,
@@ -13,7 +13,7 @@ double CBprice(double S_0,
 	double americanConversionType,
 	double maturity,
 	double faceValue,
-	double redemtionPremium,
+	double redemptionPremium,
 	double softCallStartTime,
 	double softCall,
 	double softCallStrike,
@@ -92,13 +92,13 @@ double CBprice(double S_0,
 	{
 		treeS[i][nbTreeLevels - 1] = dividendAdj * S_0 * pow(u, i) * pow(d, (nbTreeLevels - i));
 		conversionValue = conversionAdj * conversionRatio * treeS[i][nbTreeLevels - 1] / (faceValue);
-		if(conversionValue > (1 + redemtionPremium) + couponSchedule[nbTreeLevels - 1]){
+		if(conversionValue > (1 + redemptionPremium) + couponSchedule[nbTreeLevels - 1]){
 			treeConversionValue[i][nbTreeLevels - 1] = conversionValue;
 			treeConversionProb[i][nbTreeLevels - 1] = 1;
 			treeDiscRate[i][nbTreeLevels - 1] = intRate * treeConversionProb[i][nbTreeLevels - 1] + 
 														intRateRisky * (1 - treeConversionProb[i][nbTreeLevels - 1]);
 		} else {
-			treeConversionValue[i][nbTreeLevels - 1] = (1 + redemtionPremium) + couponSchedule[nbTreeLevels - 1];
+			treeConversionValue[i][nbTreeLevels - 1] = (1 + redemptionPremium) + couponSchedule[nbTreeLevels - 1];
 			treeConversionProb[i][nbTreeLevels - 1] = 0;
 			treeDiscRate[i][nbTreeLevels - 1] = intRate * treeConversionProb[i][nbTreeLevels - 1] + 
 														intRateRisky * (1 - treeConversionProb[i][nbTreeLevels - 1]);
@@ -200,7 +200,7 @@ convBondParam * init_convBondParam(
 	double americanConversionType,
 	double maturity,
 	double faceValue,
-	double redemtionPremium,
+	double redemptionPremium,
 	double softCallStartTime,
 	double softCall,
 	double softCallStrike,
@@ -226,7 +226,7 @@ convBondParam * init_convBondParam(
 	ptr_convBondParamStr -> americanConversionType = americanConversionType;
 	ptr_convBondParamStr -> maturity = maturity;
 	ptr_convBondParamStr -> faceValue = faceValue;
-	ptr_convBondParamStr -> redemtionPremium = redemtionPremium;
+	ptr_convBondParamStr -> redemptionPremium = redemptionPremium;
 	ptr_convBondParamStr -> softCallStartTime = softCallStartTime;
 	ptr_convBondParamStr -> softCall = softCall;
 	ptr_convBondParamStr -> softCallStrike = softCallStrike;
@@ -240,7 +240,7 @@ convBondParam * init_convBondParam(
 
 double CBprice_wrapper_coupon(double couponRate, convBondParam * ptr_convBondParamStr)
 {
- double price = CBprice(
+ double price = CBprice_cpp(
 	ptr_convBondParamStr -> S_0,
 	ptr_convBondParamStr -> sigma, 
 	ptr_convBondParamStr -> intRate0,
@@ -255,7 +255,7 @@ double CBprice_wrapper_coupon(double couponRate, convBondParam * ptr_convBondPar
 	ptr_convBondParamStr -> americanConversionType,
 	ptr_convBondParamStr -> maturity,
 	ptr_convBondParamStr -> faceValue,
-	ptr_convBondParamStr -> redemtionPremium,
+	ptr_convBondParamStr -> redemptionPremium,
 	ptr_convBondParamStr -> softCallStartTime,
 	ptr_convBondParamStr -> softCall,
 	ptr_convBondParamStr -> softCallStrike,
@@ -281,7 +281,7 @@ double convBondFindCoupon(
 	double americanConversionType,
 	double maturity,
 	double faceValue,
-	double redemtionPremium,
+	double redemptionPremium,
 	double softCallStartTime,
 	double softCall,
 	double softCallStrike,
@@ -297,7 +297,7 @@ double convBondFindCoupon(
 					COUPON_RATE,
 					couponFreq, dividendProtectionRate, rngDividendSchedule, 
 					conversionRatio, noConversionPeriod, americanConversionType, maturity,
-					faceValue, redemtionPremium, softCallStartTime, softCall, softCallStrike, putStartTime, putStrike,
+					faceValue, redemptionPremium, softCallStartTime, softCall, softCallStrike, putStartTime, putStrike,
 					callStartTime, callStrike, nbStepsPerYear);
 	COUPON_RATE = zeroin(TARGET_COUPON_START, TARGET_COUPON_END, CBprice_wrapper_coupon, TOLERANCE, ptr_cbparam1);
 	delete ptr_cbparam1;

@@ -26,7 +26,7 @@ typedef struct convBondParam {
 	double americanConversionType;
 	double maturity;
 	double faceValue;
-	double redemtionPremium;
+	double redemptionPremium;
 	double softCallStartTime;
 	double softCall;
 	double softCallStrike;
@@ -42,7 +42,7 @@ double prod(double*, int);
 double prod_with_cond(double*, int, double);
 double zeroin(double, double, double (*f)(double, convBondParam*),double, convBondParam*);
 
-double CBprice(double S_0,
+double CBprice_cpp(double S_0,
 	double sigma, 
 	double intRate0,
 	double creditSpread,
@@ -56,7 +56,7 @@ double CBprice(double S_0,
 	double americanConversionType,
 	double maturity,
 	double faceValue,
-	double redemtionPremium,
+	double redemptionPremium,
 	double softCallStartTime,
 	double softCall,
 	double softCallStrike,
@@ -81,7 +81,7 @@ convBondParam * init_convBondParam(
 	double americanConversionType,
 	double maturity,
 	double faceValue,
-	double redemtionPremium,
+	double redemptionPremium,
 	double softCallStartTime,
 	double softCall,
 	double softCallStrike,
@@ -107,7 +107,7 @@ double convBondFindCoupon(
 	double americanConversionType,
 	double maturity,
 	double faceValue,
-	double redemtionPremium,
+	double redemptionPremium,
 	double softCallStartTime,
 	double softCall,
 	double softCallStrike,

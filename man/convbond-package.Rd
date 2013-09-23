@@ -3,29 +3,29 @@
 \alias{convbond}
 \docType{package}
 \title{
-What the package does (short line)
+Provide solution for pricing convertible bonds
 }
 \description{
-More about what it does (maybe more than one line)
-~~ A concise (1-5 lines) description of the package ~~
+Package provides framework for pricing convertible bonds based on Derman at al. binomial model. 
+Also there are implemented some up to date features like dividend protection, embedded calls, puts etc.
 }
 \details{
 \tabular{ll}{
 Package: \tab convbond\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 0.1\cr
 Date: \tab 2013-07-30\cr
-License: \tab What license is it under?\cr
+License: \tab >= GPU v2\cr
 }
 ~~ An overview of how to use the package, including the most important functions ~~
 }
 \author{
-Who wrote it
+Dmitriy Selivanov
 
-Maintainer: Who to complain to <yourfault@somewhere.net>
+Maintainer: Dmitriy Selivanov <dmitriy.selivanov@hmail.com>
 }
 \references{
-~~ Literature or other references for background information ~~
+http://www.ederman.com/new/docs/gs-valuing_convertibles.pdf
 }
 ~~ Optionally other standard keywords, one per line, from file KEYWORDS in the R documentation directory ~~
 \keyword{ package }

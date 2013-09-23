@@ -26,7 +26,7 @@ int checkMemotyLeaks()
 	i=0;
 	while (1)
 	{
-		printf("iter %d cbprice=%f\n", ++i, CBprice(20, 0.25, 0.01, 0.03, 1, 0.02, 1, 0.015, div_sched, 4, 0, 1, 5, 100, 0, 0, 0, 0, 0, 0, 0, 0, 100));
+		printf("iter %d cbprice=%f\n", ++i, CBprice_cpp(20, 0.25, 0.01, 0.03, 1, 0.02, 1, 0.015, div_sched, 4, 0, 1, 5, 100, 0, 0, 0, 0, 0, 0, 0, 0, 100));
 	}
 	return 0;
 }

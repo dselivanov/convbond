@@ -11,7 +11,3 @@ system.time(convBondFindCouponR(20, 0.20, 0.01, 0.03, 1, 1, 0.015, div_sched, 4,
 microbenchmark(uniroot(f=CBpriceCouponWrapper, interval=c(0,0.5), 
                        20, 0.20, 0.01, 0.03, 1, 1, 0.015, div_sched, 4, 0, 1, 5, 100, 0, 0, 0, 0, 0, 0, 0, 0, 50, tol=1e-8),
                convBondFindCouponR(20, 0.20, 0.01, 0.03, 1, 1, 0.015, div_sched, 4, 0, 1, 5, 100, 0, 0, 0, 0, 0, 0, 0, 0, 50))
-# expr      min       lq  median       uq
-# 11.13801 11.46668 11.5484 11.89313
-# max neval
-# 56.34459   100

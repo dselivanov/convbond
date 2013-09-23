@@ -3,7 +3,7 @@ CBpriceCouponWrapper<-function(couponRate, S_0, sigma, intRate0, creditSpread, r
                                        americanConversionType, maturity, faceValue, redemtionPremium, barrierStartTime, barrier, barrierStrike,
                                        putStartTime, putStrike, callStartTime, callStrike, nbStepsPerYear)
 {
-  return(1-CBpriceR(S_0, sigma, intRate0, creditSpread, rateCompounding, couponRate, couponFreq,
+  return(1-cbprice(S_0, sigma, intRate0, creditSpread, rateCompounding, couponRate, couponFreq,
           dividendProtectionRate, rngDividendSchedule, conversionRatio, noConversionPeriod,
           americanConversionType, maturity, faceValue, redemtionPremium, barrierStartTime, barrier, barrierStrike,
           putStartTime, putStrike, callStartTime, callStrike, nbStepsPerYear));
@@ -13,7 +13,7 @@ CBpriceDividendWrapper<-function(rngDividendSchedule, S_0, sigma, intRate0, cred
                                  maturity, faceValue, redemtionPremium, barrierStartTime, barrier, barrierStrike,
                                  putStartTime, putStrike, callStartTime, callStrike, nbStepsPerYear)
 {
-  return(CBpriceR(S_0, sigma, intRate0, creditSpread, rateCompounding, couponRate, couponFreq,
+  return(cbprice(S_0, sigma, intRate0, creditSpread, rateCompounding, couponRate, couponFreq,
                  dividendProtectionRate, rngDividendSchedule, conversionRatio, noConversionPeriod,
                  americanConversionType, maturity, faceValue, redemtionPremium, barrierStartTime, barrier, barrierStrike,
                  putStartTime, putStrike, callStartTime, callStrike, nbStepsPerYear));

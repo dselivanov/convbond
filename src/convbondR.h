@@ -2,10 +2,10 @@
 //#include <vector>
 //#include <stdlib.h>
 using namespace Rcpp;
-double CBpriceR(
+double cbprice(
 	double S_0,
 	double sigma, 
-	double intRate0,
+	double intRate,
 	double creditSpread,
 	double rateCompounding,
 	double couponRate,
@@ -17,7 +17,7 @@ double CBpriceR(
 	double americanConversionType,
 	double maturity,
 	double faceValue,
-	double redemtionPremium,
+	double redemptionPremium,
 	double softCallStartTime,
 	double softCall,
 	double softCallStrike,
@@ -41,7 +41,7 @@ double convBondFindCouponR(
 	double americanConversionType,
 	double maturity,
 	double faceValue,
-	double redemtionPremium,
+	double redemptionPremium,
 	double softCallStartTime,
 	double softCall,
 	double softCallStrike,

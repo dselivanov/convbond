@@ -14,7 +14,7 @@ y<-lapply(DivList, CBpriceDividendWrapper, S_0 = 20, sigma = 0.35, intRate0 = 0.
         americanConversionType = 1, maturity = 10, faceValue = 100, redemtionPremium = 0, barrierStartTime=0 ,barrier = 0, barrierStrike = 0,
         putStartTime = 0, putStrike = 0, callStartTime = 0, callStrike = 0, nbStepsPerYear = 100)
 
-ggplot(data=data.frame(x=seq(startDiv + step, startDiv + step*N, step), y=unlist(y)), aes(x=x, y=y)) + 
+ggplot(data=data.frame(dividend=seq(startDiv + step, startDiv + step*N, step), cbprice=unlist(y)), aes(x=dividend, y=cbprice)) + 
    geom_line(col='red') +
    geom_point(col='red') +
    scale_x_continuous(labels = percent) +
@@ -22,7 +22,7 @@ ggplot(data=data.frame(x=seq(startDiv + step, startDiv + step*N, step), y=unlist
 
 
 div_sched<-DivList[[1]]
-CBpriceR(20, 0.25, 0.01, 0.03, 1, 0.02, 1, 0.015, div_sched, 4, 0, 1, 5, 100, 0, 0, 0, 0, 0, 0, 0, 0, 50);
+cbprice(20, 0.25, 0.01, 0.03, 1, 0.02, 1, 0.015, div_sched, 4, 0, 1, 5, 100, 0, 0, 0, 0, 0, 0, 0, 0, 50);
 convBondFindCouponR(20, 0.20, 0.01, 0.03, 1, 1, 0.015, div_sched, 4, 0, 1, 5, 100, 0, 0, 0, 0, 0, 0, 0, 0, 50);
 
 #CBpriceCouponWrapper(0.02, 20, 0.25, 0.01, 0.03, 1, 1, 0.015, div_sched, 4, 0, 1, 5, 100, 0, 0, 0, 0, 0, 0, 0, 0, 50);

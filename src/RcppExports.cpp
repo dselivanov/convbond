@@ -5,66 +5,76 @@
 
 using namespace Rcpp;
 
-// CBpriceR
-double CBpriceR(double S_0, double sigma, double intRate0, double creditSpread, double rateCompounding, double couponRate, double couponFreq, double dividendProtectionRate, NumericMatrix RDividendSchedule, double conversionRatio, double noConversionPeriod, double americanConversionType, double maturity, double faceValue, double redemtionPremium, double softCallStartTime, double softCall, double softCallStrike, double putStartTime, double putStrike, double callStartTime, double callStrike, double nbStepsPerYear);
-RcppExport SEXP convbond_CBpriceR(SEXP S_0SEXP, SEXP sigmaSEXP, SEXP intRate0SEXP, SEXP creditSpreadSEXP, SEXP rateCompoundingSEXP, SEXP couponRateSEXP, SEXP couponFreqSEXP, SEXP dividendProtectionRateSEXP, SEXP RDividendScheduleSEXP, SEXP conversionRatioSEXP, SEXP noConversionPeriodSEXP, SEXP americanConversionTypeSEXP, SEXP maturitySEXP, SEXP faceValueSEXP, SEXP redemtionPremiumSEXP, SEXP softCallStartTimeSEXP, SEXP softCallSEXP, SEXP softCallStrikeSEXP, SEXP putStartTimeSEXP, SEXP putStrikeSEXP, SEXP callStartTimeSEXP, SEXP callStrikeSEXP, SEXP nbStepsPerYearSEXP) {
+// cbprice
+double cbprice(double S_0, double sigma, double riskFreeInterestRate, double creditSpread, double rateCompounding, double couponRate, double couponFreq, double dividendProtectionRate, NumericMatrix RDividendSchedule, double conversionRatio, double noConversionPeriod, double americanConversionType, double maturity, double faceValue, double redemptionPremium, double softCallStartTime, double softCall, double softCallStrike, double putStartTime, double putStrike, double callStartTime, double callStrike, double nbStepsPerYear);
+RcppExport SEXP convbond_cbprice(SEXP S_0SEXP, SEXP sigmaSEXP, SEXP riskFreeInterestRateSEXP, SEXP creditSpreadSEXP, SEXP rateCompoundingSEXP, SEXP couponRateSEXP, SEXP couponFreqSEXP, SEXP dividendProtectionRateSEXP, SEXP RDividendScheduleSEXP, SEXP conversionRatioSEXP, SEXP noConversionPeriodSEXP, SEXP americanConversionTypeSEXP, SEXP maturitySEXP, SEXP faceValueSEXP, SEXP redemptionPremiumSEXP, SEXP softCallStartTimeSEXP, SEXP softCallSEXP, SEXP softCallStrikeSEXP, SEXP putStartTimeSEXP, SEXP putStrikeSEXP, SEXP callStartTimeSEXP, SEXP callStrikeSEXP, SEXP nbStepsPerYearSEXP) {
 BEGIN_RCPP
-    Rcpp::RNGScope __rngScope;
-    double S_0 = Rcpp::as<double >(S_0SEXP);
-    double sigma = Rcpp::as<double >(sigmaSEXP);
-    double intRate0 = Rcpp::as<double >(intRate0SEXP);
-    double creditSpread = Rcpp::as<double >(creditSpreadSEXP);
-    double rateCompounding = Rcpp::as<double >(rateCompoundingSEXP);
-    double couponRate = Rcpp::as<double >(couponRateSEXP);
-    double couponFreq = Rcpp::as<double >(couponFreqSEXP);
-    double dividendProtectionRate = Rcpp::as<double >(dividendProtectionRateSEXP);
-    NumericMatrix RDividendSchedule = Rcpp::as<NumericMatrix >(RDividendScheduleSEXP);
-    double conversionRatio = Rcpp::as<double >(conversionRatioSEXP);
-    double noConversionPeriod = Rcpp::as<double >(noConversionPeriodSEXP);
-    double americanConversionType = Rcpp::as<double >(americanConversionTypeSEXP);
-    double maturity = Rcpp::as<double >(maturitySEXP);
-    double faceValue = Rcpp::as<double >(faceValueSEXP);
-    double redemtionPremium = Rcpp::as<double >(redemtionPremiumSEXP);
-    double softCallStartTime = Rcpp::as<double >(softCallStartTimeSEXP);
-    double softCall = Rcpp::as<double >(softCallSEXP);
-    double softCallStrike = Rcpp::as<double >(softCallStrikeSEXP);
-    double putStartTime = Rcpp::as<double >(putStartTimeSEXP);
-    double putStrike = Rcpp::as<double >(putStrikeSEXP);
-    double callStartTime = Rcpp::as<double >(callStartTimeSEXP);
-    double callStrike = Rcpp::as<double >(callStrikeSEXP);
-    double nbStepsPerYear = Rcpp::as<double >(nbStepsPerYearSEXP);
-    double __result = CBpriceR(S_0, sigma, intRate0, creditSpread, rateCompounding, couponRate, couponFreq, dividendProtectionRate, RDividendSchedule, conversionRatio, noConversionPeriod, americanConversionType, maturity, faceValue, redemtionPremium, softCallStartTime, softCall, softCallStrike, putStartTime, putStrike, callStartTime, callStrike, nbStepsPerYear);
-    return Rcpp::wrap(__result);
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        double S_0 = Rcpp::as<double >(S_0SEXP);
+        double sigma = Rcpp::as<double >(sigmaSEXP);
+        double riskFreeInterestRate = Rcpp::as<double >(riskFreeInterestRateSEXP);
+        double creditSpread = Rcpp::as<double >(creditSpreadSEXP);
+        double rateCompounding = Rcpp::as<double >(rateCompoundingSEXP);
+        double couponRate = Rcpp::as<double >(couponRateSEXP);
+        double couponFreq = Rcpp::as<double >(couponFreqSEXP);
+        double dividendProtectionRate = Rcpp::as<double >(dividendProtectionRateSEXP);
+        NumericMatrix RDividendSchedule = Rcpp::as<NumericMatrix >(RDividendScheduleSEXP);
+        double conversionRatio = Rcpp::as<double >(conversionRatioSEXP);
+        double noConversionPeriod = Rcpp::as<double >(noConversionPeriodSEXP);
+        double americanConversionType = Rcpp::as<double >(americanConversionTypeSEXP);
+        double maturity = Rcpp::as<double >(maturitySEXP);
+        double faceValue = Rcpp::as<double >(faceValueSEXP);
+        double redemptionPremium = Rcpp::as<double >(redemptionPremiumSEXP);
+        double softCallStartTime = Rcpp::as<double >(softCallStartTimeSEXP);
+        double softCall = Rcpp::as<double >(softCallSEXP);
+        double softCallStrike = Rcpp::as<double >(softCallStrikeSEXP);
+        double putStartTime = Rcpp::as<double >(putStartTimeSEXP);
+        double putStrike = Rcpp::as<double >(putStrikeSEXP);
+        double callStartTime = Rcpp::as<double >(callStartTimeSEXP);
+        double callStrike = Rcpp::as<double >(callStrikeSEXP);
+        double nbStepsPerYear = Rcpp::as<double >(nbStepsPerYearSEXP);
+        double __result = cbprice(S_0, sigma, riskFreeInterestRate, creditSpread, rateCompounding, couponRate, couponFreq, dividendProtectionRate, RDividendSchedule, conversionRatio, noConversionPeriod, americanConversionType, maturity, faceValue, redemptionPremium, softCallStartTime, softCall, softCallStrike, putStartTime, putStrike, callStartTime, callStrike, nbStepsPerYear);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
 END_RCPP
 }
 // convBondFindCouponR
-double convBondFindCouponR(double S_0, double sigma, double intRate0, double creditSpread, double rateCompounding, double couponFreq, double dividendProtectionRate, NumericMatrix RDividendSchedule, double conversionRatio, double noConversionPeriod, double americanConversionType, double maturity, double faceValue, double redemtionPremium, double softCallStartTime, double softCall, double softCallStrike, double putStartTime, double putStrike, double callStartTime, double callStrike, double nbStepsPerYear);
-RcppExport SEXP convbond_convBondFindCouponR(SEXP S_0SEXP, SEXP sigmaSEXP, SEXP intRate0SEXP, SEXP creditSpreadSEXP, SEXP rateCompoundingSEXP, SEXP couponFreqSEXP, SEXP dividendProtectionRateSEXP, SEXP RDividendScheduleSEXP, SEXP conversionRatioSEXP, SEXP noConversionPeriodSEXP, SEXP americanConversionTypeSEXP, SEXP maturitySEXP, SEXP faceValueSEXP, SEXP redemtionPremiumSEXP, SEXP softCallStartTimeSEXP, SEXP softCallSEXP, SEXP softCallStrikeSEXP, SEXP putStartTimeSEXP, SEXP putStrikeSEXP, SEXP callStartTimeSEXP, SEXP callStrikeSEXP, SEXP nbStepsPerYearSEXP) {
+double convBondFindCouponR(double S_0, double sigma, double intRate0, double creditSpread, double rateCompounding, double couponFreq, double dividendProtectionRate, NumericMatrix RDividendSchedule, double conversionRatio, double noConversionPeriod, double americanConversionType, double maturity, double faceValue, double redemptionPremium, double softCallStartTime, double softCall, double softCallStrike, double putStartTime, double putStrike, double callStartTime, double callStrike, double nbStepsPerYear);
+RcppExport SEXP convbond_convBondFindCouponR(SEXP S_0SEXP, SEXP sigmaSEXP, SEXP intRate0SEXP, SEXP creditSpreadSEXP, SEXP rateCompoundingSEXP, SEXP couponFreqSEXP, SEXP dividendProtectionRateSEXP, SEXP RDividendScheduleSEXP, SEXP conversionRatioSEXP, SEXP noConversionPeriodSEXP, SEXP americanConversionTypeSEXP, SEXP maturitySEXP, SEXP faceValueSEXP, SEXP redemptionPremiumSEXP, SEXP softCallStartTimeSEXP, SEXP softCallSEXP, SEXP softCallStrikeSEXP, SEXP putStartTimeSEXP, SEXP putStrikeSEXP, SEXP callStartTimeSEXP, SEXP callStrikeSEXP, SEXP nbStepsPerYearSEXP) {
 BEGIN_RCPP
-    Rcpp::RNGScope __rngScope;
-    double S_0 = Rcpp::as<double >(S_0SEXP);
-    double sigma = Rcpp::as<double >(sigmaSEXP);
-    double intRate0 = Rcpp::as<double >(intRate0SEXP);
-    double creditSpread = Rcpp::as<double >(creditSpreadSEXP);
-    double rateCompounding = Rcpp::as<double >(rateCompoundingSEXP);
-    double couponFreq = Rcpp::as<double >(couponFreqSEXP);
-    double dividendProtectionRate = Rcpp::as<double >(dividendProtectionRateSEXP);
-    NumericMatrix RDividendSchedule = Rcpp::as<NumericMatrix >(RDividendScheduleSEXP);
-    double conversionRatio = Rcpp::as<double >(conversionRatioSEXP);
-    double noConversionPeriod = Rcpp::as<double >(noConversionPeriodSEXP);
-    double americanConversionType = Rcpp::as<double >(americanConversionTypeSEXP);
-    double maturity = Rcpp::as<double >(maturitySEXP);
-    double faceValue = Rcpp::as<double >(faceValueSEXP);
-    double redemtionPremium = Rcpp::as<double >(redemtionPremiumSEXP);
-    double softCallStartTime = Rcpp::as<double >(softCallStartTimeSEXP);
-    double softCall = Rcpp::as<double >(softCallSEXP);
-    double softCallStrike = Rcpp::as<double >(softCallStrikeSEXP);
-    double putStartTime = Rcpp::as<double >(putStartTimeSEXP);
-    double putStrike = Rcpp::as<double >(putStrikeSEXP);
-    double callStartTime = Rcpp::as<double >(callStartTimeSEXP);
-    double callStrike = Rcpp::as<double >(callStrikeSEXP);
-    double nbStepsPerYear = Rcpp::as<double >(nbStepsPerYearSEXP);
-    double __result = convBondFindCouponR(S_0, sigma, intRate0, creditSpread, rateCompounding, couponFreq, dividendProtectionRate, RDividendSchedule, conversionRatio, noConversionPeriod, americanConversionType, maturity, faceValue, redemtionPremium, softCallStartTime, softCall, softCallStrike, putStartTime, putStrike, callStartTime, callStrike, nbStepsPerYear);
-    return Rcpp::wrap(__result);
+    SEXP __sexp_result;
+    {
+        Rcpp::RNGScope __rngScope;
+        double S_0 = Rcpp::as<double >(S_0SEXP);
+        double sigma = Rcpp::as<double >(sigmaSEXP);
+        double intRate0 = Rcpp::as<double >(intRate0SEXP);
+        double creditSpread = Rcpp::as<double >(creditSpreadSEXP);
+        double rateCompounding = Rcpp::as<double >(rateCompoundingSEXP);
+        double couponFreq = Rcpp::as<double >(couponFreqSEXP);
+        double dividendProtectionRate = Rcpp::as<double >(dividendProtectionRateSEXP);
+        NumericMatrix RDividendSchedule = Rcpp::as<NumericMatrix >(RDividendScheduleSEXP);
+        double conversionRatio = Rcpp::as<double >(conversionRatioSEXP);
+        double noConversionPeriod = Rcpp::as<double >(noConversionPeriodSEXP);
+        double americanConversionType = Rcpp::as<double >(americanConversionTypeSEXP);
+        double maturity = Rcpp::as<double >(maturitySEXP);
+        double faceValue = Rcpp::as<double >(faceValueSEXP);
+        double redemptionPremium = Rcpp::as<double >(redemptionPremiumSEXP);
+        double softCallStartTime = Rcpp::as<double >(softCallStartTimeSEXP);
+        double softCall = Rcpp::as<double >(softCallSEXP);
+        double softCallStrike = Rcpp::as<double >(softCallStrikeSEXP);
+        double putStartTime = Rcpp::as<double >(putStartTimeSEXP);
+        double putStrike = Rcpp::as<double >(putStrikeSEXP);
+        double callStartTime = Rcpp::as<double >(callStartTimeSEXP);
+        double callStrike = Rcpp::as<double >(callStrikeSEXP);
+        double nbStepsPerYear = Rcpp::as<double >(nbStepsPerYearSEXP);
+        double __result = convBondFindCouponR(S_0, sigma, intRate0, creditSpread, rateCompounding, couponFreq, dividendProtectionRate, RDividendSchedule, conversionRatio, noConversionPeriod, americanConversionType, maturity, faceValue, redemptionPremium, softCallStartTime, softCall, softCallStrike, putStartTime, putStrike, callStartTime, callStrike, nbStepsPerYear);
+        PROTECT(__sexp_result = Rcpp::wrap(__result));
+    }
+    UNPROTECT(1);
+    return __sexp_result;
 END_RCPP
 }
