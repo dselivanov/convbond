@@ -4,7 +4,7 @@ Title: convertible bond pricing solution
 Version: 0.1
 Date: 2013-08-09
 Author: Dmitriy Selivanov
-Maintainer: Dmitriy Selivanov <dmitriy.selivanov@hmail.com>
+Maintainer: Dmitriy Selivanov <selivanov.dmitriy@gmail.com>
 Description: convertible bond pricing solution
 License: >= GPU v2
 Depends: Rcpp (>= 0.10.3)
