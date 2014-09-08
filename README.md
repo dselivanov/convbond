@@ -1,4 +1,1 @@
-convbond
-========
-
-convertible bond pricing
+# This repository provides materials and code (R package) for evaluating convertible bond prices and other useful characteristics of this derivatives.
