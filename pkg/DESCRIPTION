@@ -1,11 +1,16 @@
 Package: convbond
 Type: Package
-Title: convertible bond pricing solution
-Version: 0.1
-Date: 2013-08-09
+Title: convertible bond pricing
+Version: 0.1.1
+Date: 2014-09-08
 Author: Dmitriy Selivanov
 Maintainer: Dmitriy Selivanov <selivanov.dmitriy@gmail.com>
-Description: convertible bond pricing solution
-License: >= GPU v2
-Depends: Rcpp (>= 0.10.3)
+Description: convertible bond pricing
+URL: https://github.com/dselivanov/convbond
+Roxygen: list(wrap = FALSE)
+License: MIT + file LICENSE
+Depends:
+    R (>= 3.0.0)
+Imports:
+    Rcpp
 LinkingTo: Rcpp

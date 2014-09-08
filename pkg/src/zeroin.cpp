@@ -45,7 +45,7 @@
  ************************************************************************
  */
 #include "convbond.h"
-double zeroin(double ax, double bx, double (*f)(double, convBondParam*),double tol, convBondParam *cbparam)  
+double zeroin(double ax, double bx, double (*f)(double, convBondParam*, double), double tol, convBondParam *cbparam, double TARGET_BOND_PRICE = 1)
 {
   double a,b,c;				// Abscissae, descr. see above
   double fa;				// f(a)
@@ -54,8 +54,8 @@ double zeroin(double ax, double bx, double (*f)(double, convBondParam*),double t
   int iter = 0;
   a = ax;
   b = bx;
-  fa = (*f)(a, cbparam);
-  fb = (*f)(b, cbparam);
+  fa = (*f)(a, cbparam, TARGET_BOND_PRICE);
+  fb = (*f)(b, cbparam, TARGET_BOND_PRICE);
   c = a;
   fc = fa;
 
@@ -115,7 +115,7 @@ double zeroin(double ax, double bx, double (*f)(double, convBondParam*),double t
   		}
   	}
       a = b;  fa = fb;			// Save the previous approx.	
-      b += new_step;  fb = (*f)(b, cbparam);	// Do step to a new approxim.	
+      b += new_step;  fb = (*f)(b, cbparam, TARGET_BOND_PRICE);	// Do step to a new approxim.	
       if( (fb > 0 && fc > 0) || (fb < 0 && fc < 0) )
       {                 			// Adjust c for it to have a sign opposite to that of b  
         c = a;  fc = fa;

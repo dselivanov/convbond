@@ -37,12 +37,11 @@ typedef struct convBondParam {
 	double nbStepsPerYear;
 } convBondParam;
 
-//int *createIndex(int);
 double prod(double*, int);
-double prod_with_cond(double*, int, double);
-double zeroin(double, double, double (*f)(double, convBondParam*),double, convBondParam*);
+double prodWithCondition(double*, int, double);
+double zeroin(double, double, double (*f)(double, convBondParam*, double), double, convBondParam*, double);
 
-double CBprice_cpp(double S_0,
+double CBpriceCpp(double S_0,
 	double sigma, 
 	double intRate0,
 	double creditSpread,
@@ -93,7 +92,7 @@ convBondParam * init_convBondParam(
   
 double CBpriceWrapper_StructInput(double, convBondParam*);
  
-double convBondFindCoupon(
+double convBondFindCouponCpp(
 	double S_0,
 	double sigma, 
 	double intRate0,
@@ -115,7 +114,8 @@ double convBondFindCoupon(
 	double putStrike,
 	double callStartTime,
 	double callStrike,
-	double nbStepsPerYear);
+	double nbStepsPerYear,
+  double TARGET_BOND_PRICE);
 
 int checkMemotyLeaks();
-double CBprice_wrapper_coupon(double, convBondParam *);
+double CBpriceAtGivenCouponDiff(double, convBondParam *, double);

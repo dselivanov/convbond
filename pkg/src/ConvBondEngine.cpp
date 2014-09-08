@@ -1,5 +1,5 @@
 #include "convbond.h"
-double CBprice_cpp(double S_0,
+double CBpriceCpp(double S_0,
 	double sigma,
 	double intRate0,
 	double creditSpread,
@@ -87,7 +87,7 @@ double CBprice_cpp(double S_0,
 		dividendSchedule[i] = dividendSchedule[i] - rngDividendSchedule[j][DIVIDEND_AMOUNT_DIMENSION];
 	}
 	dividendAdj = prod(dividendSchedule, nbTreeLevels);
-	conversionAdj = 1 / prod_with_cond(dividendSchedule, nbTreeLevels, dividendProtectionRate);
+	conversionAdj = 1 / prodWithCondition(dividendSchedule, nbTreeLevels, dividendProtectionRate);
 	for( i = 0; i < nbTreeLevels; i++ )
 	{
 		treeS[i][nbTreeLevels - 1] = dividendAdj * S_0 * pow(u, i) * pow(d, (nbTreeLevels - i));
@@ -107,7 +107,7 @@ double CBprice_cpp(double S_0,
 	for(k = nbTreeLevels - 2; k >= 0; k-- )
 	{
 		dividendAdj = prod(dividendSchedule, k);
-		conversionAdj = 1 / prod_with_cond(dividendSchedule, k, dividendProtectionRate);
+		conversionAdj = 1 / prodWithCondition(dividendSchedule, k, dividendProtectionRate);
 		i = 0;
 		for(i = 0; i <= k; i++ )
 		{
@@ -237,10 +237,10 @@ convBondParam * init_convBondParam(
 	ptr_convBondParamStr -> nbStepsPerYear = nbStepsPerYear;
 	return ptr_convBondParamStr;
 }
-
-double CBprice_wrapper_coupon(double couponRate, convBondParam * ptr_convBondParamStr)
+// calculates diff between CB price at given coupon level and target bond price for opimizaton in zeroin function.
+double CBpriceAtGivenCouponDiff(double couponRate, convBondParam * ptr_convBondParamStr, double TARGET_BOND_PRICE = 1.0)
 {
- double price = CBprice_cpp(
+ double CBpriceAtGivenCoupon = CBpriceCpp(
 	ptr_convBondParamStr -> S_0,
 	ptr_convBondParamStr -> sigma, 
 	ptr_convBondParamStr -> intRate0,
@@ -264,10 +264,12 @@ double CBprice_wrapper_coupon(double couponRate, convBondParam * ptr_convBondPar
 	ptr_convBondParamStr -> callStartTime,
 	ptr_convBondParamStr -> callStrike,
 	ptr_convBondParamStr -> nbStepsPerYear);
-	return (price - CB_PRICE_TARGET_COUPON_CALCULATION);
+	return (CBpriceAtGivenCoupon - TARGET_BOND_PRICE);
 }
+// Evaluating coupon for a given bond parameters and 
+// In most cases this is needed for coupon evaluation at CB issuance.
 
-double convBondFindCoupon(
+double convBondFindCouponCpp(
  double S_0,
 	double sigma, 
 	double intRate0,
@@ -289,17 +291,18 @@ double convBondFindCoupon(
 	double putStrike,
 	double callStartTime,
 	double callStrike,
-	double nbStepsPerYear)
+	double nbStepsPerYear,
+  double TARGET_BOND_PRICE = 1.0)
 {
-	double COUPON_RATE = 0;
-	convBondParam * ptr_cbparam1;
-	ptr_cbparam1 = init_convBondParam(S_0, sigma, intRate0, creditSpread, rateCompounding, 
+	double COUPON_RATE = 0.0;
+	convBondParam * ptrCBparam;
+	ptrCBparam = init_convBondParam(S_0, sigma, intRate0, creditSpread, rateCompounding, 
 					COUPON_RATE,
 					couponFreq, dividendProtectionRate, rngDividendSchedule, 
 					conversionRatio, noConversionPeriod, americanConversionType, maturity,
 					faceValue, redemptionPremium, softCallStartTime, softCall, softCallStrike, putStartTime, putStrike,
 					callStartTime, callStrike, nbStepsPerYear);
-	COUPON_RATE = zeroin(TARGET_COUPON_START, TARGET_COUPON_END, CBprice_wrapper_coupon, TOLERANCE, ptr_cbparam1);
-	delete ptr_cbparam1;
+	COUPON_RATE = zeroin(TARGET_COUPON_START, TARGET_COUPON_END, CBpriceAtGivenCouponDiff, TOLERANCE, ptrCBparam, TARGET_BOND_PRICE);
+	delete ptrCBparam;
 	return (COUPON_RATE);
 }

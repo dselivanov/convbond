@@ -1,8 +1,6 @@
 #include <Rcpp.h>
-//#include <vector>
-//#include <stdlib.h>
 using namespace Rcpp;
-double cbprice(
+double CBprice(
 	double S_0,
 	double sigma, 
 	double intRate,
@@ -27,7 +25,8 @@ double cbprice(
 	double callStrike,
 	double nbStepsPerYear);
 	
-double convBondFindCouponR(
+
+double CBfindCoupon(
 	double S_0,
 	double sigma, 
 	double intRate0,
@@ -49,6 +48,7 @@ double convBondFindCouponR(
 	double putStrike,
 	double callStartTime,
 	double callStrike,
-	double nbStepsPerYear);
+	double nbStepsPerYear,
+  double targetBondPrice);
 
-void NumericMatrix_to_vector2d(NumericMatrix Rmatrix, std::vector< std::vector< double > > &vec2d);
+void NumericMatrixToVector2d(NumericMatrix Rmatrix, std::vector< std::vector< double > > &vec2d);
