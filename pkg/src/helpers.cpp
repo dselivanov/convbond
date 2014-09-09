@@ -1,4 +1,20 @@
 #include "convbond.h"
+// convert NumericMatrix to vector<vector<double>> 
+void NumericMatrixToVector2d(NumericMatrix Rmatrix, std::vector< std::vector< double > > &vec2d)
+{
+  vec2d.resize(Rmatrix.nrow());
+  for (int i = 0; i < Rmatrix.nrow(); i++)
+  {
+  	vec2d[i].resize(Rmatrix.ncol());
+	}
+	for (int i=0;i < Rmatrix.nrow(); i++)
+	{
+		for (int j=0;j < Rmatrix.ncol(); j++)
+		{
+			vec2d[i][j] = Rmatrix(i, j);
+		}
+	}
+}
 // returns poduct of first N elements of array
 double prod(double *arr, int N)
 {
@@ -16,7 +32,7 @@ double prod(double *arr, int N)
 // we adjust conversion ratio to condition + arr[i]. So new conversion ratio will 
 // be 1 / (condition + arr[i]) = 1 / (0.03 + 0.95) = 1 / 0.98
 // function prod_with_cond() returns this adjusttion for conversion ratio (in our example it returns 0.98)
-double prod_with_cond(double *arr, int N, double condition)
+double prodWithCondition(double *arr, int N, double condition)
 {
 	double res = 1.0;
 	double arr_elem, adj_elem;
@@ -38,16 +54,3 @@ double prod_with_cond(double *arr, int N, double condition)
 	}
 	return res;
 }
-
-/*
-// creates array of 0 1 2 3 ... N - 1
-int* createIndex(int N)
-{
-	int *indx = NULL;
-	indx=new int[N];
-	for(int i = 0; i<N; i++)
-	{
-		indx[i] = i;
-	}
-	return indx;
-}*/

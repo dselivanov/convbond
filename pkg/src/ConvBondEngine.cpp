@@ -133,7 +133,7 @@ double CBpriceCpp(double S_0,
 				treeConversionValue[i][k] = couponSchedule[k] + p * discFactorRiskyUp * treeConversionValue[i + 1][k + 1]
 															 + (1 - p) * discFactorRiskyDown * treeConversionValue[i][k + 1];
 				treeConversionValue[i][k] = max(min(treeConversionValue[i][k], softCallStrike), conversionValue);
-			}
+			} 
 			if (americanConversionType && noConversionPeriod <= k * dt) 
 			{
 				if (conversionValue > treeConversionValue[i][k]) 
@@ -152,7 +152,7 @@ double CBpriceCpp(double S_0,
 			{
 				if((callStrike > 0)
 					&& (treeConversionValue[i][k] > callStrike)
-					&& (callStrike > conversionValue)
+					&& (callStrike <= conversionValue)
 					&& (callStartTime <= dt * k))
 				{
 					treeConversionValue[i][k] = callStrike;
