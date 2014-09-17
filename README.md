@@ -11,7 +11,7 @@ I worked on this project in summer of 2013. There is autumn of 2014 at the momen
 1. some useful details about pricing already forgotten  
 
 ## MOTIVATION
-This package was developed because of lack of this functionality in other packages and even other open source projects. There is excellent (quantlib)[http://quantlib.org/index.shtml] project and related R wrapper - RQuantLib(http://cran.r-project.org/web/packages/RQuantLib/index.html). But it is very big and it is quite hard to understand all its structure and how to use it (at least for me). And the  more important - this library has no functionality for pricing convertible bonds with dividend protection. Now almost all convertibles has dividend protection, soft calls, etc.
+This package was developed because of lack of this functionality in other packages and even other open source projects. There is excellent [quantlib](http://quantlib.org/index.shtml) project and related R wrapper - [RQuantLib](http://cran.r-project.org/web/packages/RQuantLib/index.html). But it is very big and it is quite hard to understand all its structure and how to use it (at least for me). And the  more important - this library has no functionality for pricing convertible bonds with dividend protection. Now almost all convertibles has dividend protection, soft calls, etc.
 
 ## FEATURES
 Convbond package allow to evaluate convertibles with  
